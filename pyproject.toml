@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "heisenbug"
+version = "0.1.0"
+description = "Demo app"
+authors = ["sobolevn <mail@sobolevn.me>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.670"
+wemake-python-styleguide = "^0.7"
+
+safety = "^1.8"
+
+pytest = "^4.3"
+pytest-cov = "^2.6"
+pytest-randomly = "^1.2"
+pytest-testmon = "^0.9.15"
+pytest-timeout = "^1.3"
+mutmut = "^1.3"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"

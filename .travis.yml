@@ -1,0 +1,31 @@
+language: python
+
+matrix:
+  fast_finish: true
+  include:
+    - python: 3.6
+
+
+before_install:
+  - curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+  - source "$HOME/.poetry/env"
+
+install:
+  - poetry install
+
+script:
+  - poetry run flake8 heisentbug tests
+  - poetry run mypy heisentbug
+  - poetry run pytest
+  - poetry check
+  - pip check
+  - safety check --bare --full-report
+
+after_success:
+  - pip install coveralls
+  - coveralls
+
+notifications:
+  email:
+    on_success: never
+    on_failure: change
