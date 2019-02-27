@@ -14,8 +14,8 @@ install:
   - poetry install
 
 script:
-  - poetry run flake8 heisentbug tests
-  - poetry run mypy heisentbug
+  - poetry run flake8 heisenbug tests
+  - poetry run mypy heisenbug
   - poetry run pytest
   - poetry check
   - pip check

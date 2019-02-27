@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from heisenbug.simple import add
 
 
