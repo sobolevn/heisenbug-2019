@@ -14,3 +14,26 @@ Demo app that shows how can we effectively use mutation testing.
 This example is used to illustrate the simplest use-case possible.
 We only have a function with a single statement.
 This statement will be mutated, our mutation test will catch that.
+
+### opensource_disl_case.ipynb
+
+This is a real-world example about
+my open-source project called [`docker-image-size-limit`](https://github.com/wemake-services/docker-image-size-limit).
+
+It is a perfectly working app with just 70 lines for simple `python` code.
+Fully tested with E2E and unit tests, typed, 100% covered.
+And it has 10 surviving mutants.
+
+This article shows you exactly what happened and how to solve this case.
+
+
+## Resource
+
+You might also be interested in:
+
+- https://nedbatchelder.com/blog/201903/mutmut.html
+
+
+## License
+
+Content is licensed under [CC BY-NC](https://creativecommons.org/licenses/by-nc/4.0/)

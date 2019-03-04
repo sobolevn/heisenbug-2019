@@ -17,9 +17,11 @@ script:
   - poetry run flake8 heisenbug tests
   - poetry run mypy heisenbug
   - poetry run pytest
+  # The next line will fail to demonstrate how bad our tests actually are:
+  - poetry run mutmut run || true
   - poetry check
-  - pip check
-  - safety check --bare --full-report
+  - poetry run pip check
+  - poetry run safety check --bare --full-report
 
 after_success:
   - pip install coveralls
