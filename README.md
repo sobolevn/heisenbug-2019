@@ -26,11 +26,24 @@ And it has 10 surviving mutants.
 
 This article shows you exactly what happened and how to solve this case.
 
+### algorithm.py
+
+This is a simple `buble_sort` algorithm.
+
+I have taken an example algorithm as is from [`TheAlgorithms/Python`](https://github.com/TheAlgorithms/Python/blob/master/sorts/bubble_sort.py), which is a very popular `python` library.
+
+That's the sad result:
+
+```
+⠼ 20/20  🎉 15  ⏰ 0  🤔 0  🙁 5
+```
+
 
 ## Resources
 
 You might also be interested in:
 
+- https://hackernoon.com/mutmut-a-python-mutation-testing-system-9b9639356c78
 - https://nedbatchelder.com/blog/201903/mutmut.html
 
 
