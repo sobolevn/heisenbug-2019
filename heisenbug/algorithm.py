@@ -13,7 +13,6 @@ def bubble_sort(array):
         The same array ordered by ascending.
 
     Examples:
-
         >>> bubble_sort([0, 5, 3, 2, 2])
         [0, 2, 2, 3, 5]
         >>> bubble_sort([])
@@ -30,7 +29,7 @@ def bubble_sort(array):
         for second in range(length - 1 - first):
             if array[second] > array[second + 1]:
                 swapped = True
-                array[second], array[second + 1] = (
+                array[second], array[second + 1] = (  # noqa: Z446
                     array[second + 1],
                     array[second],
                 )
