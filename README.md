@@ -19,8 +19,7 @@ This statement will be mutated, our mutation test will catch that.
 ⠼ 1/1  🎉 0  ⏰ 0  🤔 0  🙁 1
 ```
 
-The solution to this case is available here: [test_simple.py]
-(https://github.com/sobolevn/heisenbug-2019/blob/master/tests/test_simple.py)
+The solution to this case is available here: [test_simple.py](https://github.com/sobolevn/heisenbug-2019/blob/master/tests/test_simple.py)
 
 ### flask_app.py
 
