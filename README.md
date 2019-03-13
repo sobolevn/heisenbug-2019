@@ -50,6 +50,9 @@ we will never be able to find this bug.
 
 Main take-away: high-level integrations tests are not good enough on their own.
 
+Solution: do not use `200` code where something goes wrong,
+make sure that you write enough unit-tests for your view logic.
+
 ### algorithm.py
 
 This is a simple `bubble_sort` algorithm.
