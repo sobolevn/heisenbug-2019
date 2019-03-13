@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import pytest
+from hypothesis import given
+from hypothesis.strategies import integers, lists
 
 from heisenbug.algorithm import bubble_sort
 
@@ -14,3 +16,18 @@ from heisenbug.algorithm import bubble_sort
 def test_bubble_sort(parameter, expected_result):
     """With this test we illustrate how we should not write tests."""
     assert bubble_sort(parameter) == expected_result
+
+
+@given(lists(integers()))
+def test_bubble_sort_property(parameter):
+    """
+    Runs property based test for this algorithm.
+
+    Even this won't save us from incorrect mutants.
+    """
+    possibly_sorted = bubble_sort(parameter)
+
+    assert all(
+        possibly_sorted[index] <= possibly_sorted[index + 1]
+        for index in range(len(possibly_sorted) - 1)
+    )

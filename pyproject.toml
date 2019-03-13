@@ -7,12 +7,12 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.6"
+flask = "^1.0"
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.670"
 wemake-python-styleguide = "^0.7"
 
-safety = "^1.8"
 
 pytest = "^4.3"
 pytest-cov = "^2.6"
@@ -20,6 +20,7 @@ pytest-randomly = "^1.2"
 pytest-testmon = "^0.9.15"
 pytest-timeout = "^1.3"
 mutmut = "^1.3"
+hypothesis = "^4.11"
 
 [build-system]
 requires = ["poetry>=0.12"]

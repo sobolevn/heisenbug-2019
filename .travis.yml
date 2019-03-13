@@ -21,7 +21,6 @@ script:
   - poetry run mutmut run || true
   - poetry check
   - poetry run pip check
-  - poetry run safety check --bare --full-report
 
 after_success:
   - pip install coveralls

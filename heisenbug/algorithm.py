@@ -1,26 +1,18 @@
 # -*- coding: utf-8 -*-
 
+from typing import List
 
-def bubble_sort(array):
+
+def bubble_sort(array: List[int]) -> List[int]:
     """
     Pure implementation of bubble sort algorithm in Python.
 
     Args:
         array: Some mutable ordered array with heterogeneous
-            comparable items inside.
+            integers as items inside.
 
     Returns:
         The same array ordered by ascending.
-
-    Examples:
-        >>> bubble_sort([0, 5, 3, 2, 2])
-        [0, 2, 2, 3, 5]
-        >>> bubble_sort([])
-        []
-        >>> bubble_sort([-2, -5, -45])
-        [-45, -5, -2]
-        >>> bubble_sort([-23, 0, 6, -4, 34])
-        [-23, -4, 0, 6, 34]
 
     """
     length = len(array)

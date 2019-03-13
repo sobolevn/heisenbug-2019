@@ -199,3 +199,5 @@ fabric.properties
 #### custom ####
 
 .mutmut-cache
+.testmondata
+.testmondata-initial
