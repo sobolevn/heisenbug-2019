@@ -80,7 +80,11 @@ my open-source project called [`docker-image-size-limit`](https://github.com/wem
 
 It is a perfectly working app with just 70 lines for simple `python` code.
 Fully tested with E2E and unit tests, typed, 100% covered.
-And it has 10 surviving mutants.
+And it has ~10 surviving mutants.
+
+```
+⠇ 29/29  🎉 19  ⏰ 0  🤔 2  🙁 8
+```
 
 This article shows you exactly what happened and how to solve this case.
 
