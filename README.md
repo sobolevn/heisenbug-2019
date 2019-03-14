@@ -21,6 +21,31 @@ This statement will be mutated, our mutation test will catch that.
 
 The solution to this case is available here: [test_simple.py](https://github.com/sobolevn/heisenbug-2019/blob/master/tests/test_simple.py)
 
+### constants.py
+
+This example covers very important problem that is very hard to mention.
+Using the same constants for testing and productions
+does not actually test anything.
+
+```
+⠇ 6/6  🎉 2  ⏰ 0  🤔 1  🙁 3
+```
+
+Since we will miss cases like this one:
+
+```diff
+--- heisenbug/constants.py
++++ heisenbug/constants.py
+@@ -1,7 +1,7 @@
+ # -*- coding: utf-8 -*-
+
+
+-BAD_FUNCTION_NAMES = ['dir', 'vars', 'locals', 'globals']
++BAD_FUNCTION_NAMES = ['dir', 'vars', 'locals', 'XXglobalsXX']
+```
+
+Solution: duplicate your constants in tests, see [test_constants.py](https://github.com/sobolevn/heisenbug-2019/blob/master/tests/test_constants.py)
+
 ### flask_app.py
 
 This example represents a regular `flask` application.
@@ -66,7 +91,7 @@ That's the result (please, take a not that it is full of false positives):
 ⠼ 20/20  🎉 15  ⏰ 0  🤔 0  🙁 5
 ```
 
-You can see that we even use property-based tests here: https://github.com/sobolevn/heisenbug-2019/blob/master/tests/test_algorithm.py
+You can see that we even use property-based tests [here](https://github.com/sobolevn/heisenbug-2019/blob/master/tests/test_algorithm.py).
 
 But it still does not save us from false-positives of mutation testing.
 
