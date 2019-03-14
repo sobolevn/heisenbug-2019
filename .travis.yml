@@ -7,6 +7,7 @@ matrix:
 
 
 before_install:
+  - pip freeze | xargs pip uninstall -y
   - curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
   - source "$HOME/.poetry/env"
 
@@ -21,6 +22,7 @@ script:
   - poetry run mutmut run || true
   - poetry check
   - poetry run pip check
+  - poetry run safety check --bare --full-report
 
 after_success:
   - pip install coveralls
