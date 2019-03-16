@@ -12,7 +12,7 @@ Demo app that shows how can we effectively use mutation testing.
 ### simple.py
 
 This example is used to illustrate the simplest use-case possible.
-We only have a function with a single statement.
+We only have one function with a single statement.
 This statement will be mutated, our mutation test will catch that.
 
 ```
@@ -23,8 +23,7 @@ The solution to this case is available here: [test_simple.py](https://github.com
 
 ### constants.py
 
-This example covers very important problem that is very hard to mention.
-Using the same constants for testing and productions
+Using the same constants for testing and production
 does not actually test anything.
 
 ```
@@ -44,12 +43,14 @@ Since we will miss cases like this one:
 +BAD_FUNCTION_NAMES = ['dir', 'vars', 'locals', 'XXglobalsXX']
 ```
 
+The tests will move in sync with the production code, following the bugs introduced there!
+
 Solution: duplicate your constants in tests, see [test_constants.py](https://github.com/sobolevn/heisenbug-2019/blob/master/tests/test_constants.py)
 
 ### flask_app.py
 
 This example represents a regular `flask` application.
-It is configured to swallow exceptions and log them to somewhere.
+It is configured to swallow exceptions and log them somewhere.
 
 It seems to be fully tested, but has one big mistake inside.
 
@@ -63,15 +64,15 @@ This is the case we are looking for:
 --- heisenbug/flask_app.py
 +++ heisenbug/flask_app.py
 @@ -18,7 +18,7 @@
- @app.route('/')
- def hello():
+ @app.route('/{int:input}')
+ def hello(input):
      """View that will fail in production."""
--    return 'Hello, world! {0} faith in you.'.format(1 * 0)
-+    return 'Hello, world! {0} faith in you.'.format(1 / 0)
+-    return 'Hello, world! {0} faith in you.'.format(1 * input)
++    return 'Hello, world! {0} faith in you.'.format(1 / input)
 ```
 
 Since we swallow exceptions and test only partial of our output,
-we will never be able to find this bug.
+we will never be able to find the problem of when input is zero and causes a divide by zero.
 
 Main take-away: high-level integrations tests are not good enough on their own.
 
@@ -85,7 +86,7 @@ This is a simple `bubble_sort` algorithm.
 I have taken an example algorithm as is from [`TheAlgorithms/Python`](https://github.com/TheAlgorithms/Python/blob/master/sorts/bubble_sort.py),
 which is a very popular `python` library.
 
-That's the result (please, take a not that it is full of false positives):
+This is the result (please, take a not that it has several false positives):
 
 ```
 ⠼ 20/20  🎉 15  ⏰ 0  🤔 0  🙁 5
@@ -93,10 +94,10 @@ That's the result (please, take a not that it is full of false positives):
 
 You can see that we even use property-based tests [here](https://github.com/sobolevn/heisenbug-2019/blob/master/tests/test_algorithm.py).
 
-But it still does not save us from false-positives of mutation testing.
+But it still does not save us from the false-positives of mutation testing.
 
 Main take-away: it is really hard to use mutation testing
-to test algorithms build with performance and optimisations in mind.
+to test algorithms built with performance and optimisations in mind.
 
 ### opensource_disl_case.ipynb
 
