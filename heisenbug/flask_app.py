@@ -15,8 +15,8 @@ from flask import Flask
 app = Flask(__name__)
 
 
-@app.route('/')
-def hello():
+@app.route('/<int:index>')
+def hello(index: int):
     """
     View that will fail in production.
 
@@ -27,7 +27,9 @@ def hello():
 
     So, we can later test it with unit-tests, that will fail for bad mutations.
     """
-    return 'Hello, world! {0} faith in you.'.format(1 * 0)
+    return 'Hello, world! {0} faith in you.'.format(
+        1 * index,
+    )
 
 
 @app.errorhandler(Exception)
@@ -40,4 +42,4 @@ def log_to_sentry_and_show_sorry_page(exception):
     Because we do not want to send 500 code,
     since business says that it is bad for google search rating.
     """
-    return 'Sorry, world :(', 200
+    return 'S0rry, world :(', 200

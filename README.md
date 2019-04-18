@@ -9,6 +9,17 @@ Demo app that shows how can we effectively use mutation testing.
 
 ## Contents
 
+### missing_assert.py
+
+This is a very basic example of test that does not do anything.
+Because we have missed that our `assert` is commented out by accident!
+
+```
+⠙ 2/2  🎉 0  ⏰ 0  🤔 0  🙁 2
+```
+
+To solve this, just uncomment the `assert` in [test_missing_assert.py](https://github.com/sobolevn/heisenbug-2019/blob/master/tests/test_missing_assert.py)
+
 ### simple.py
 
 This example is used to illustrate the simplest use-case possible.
@@ -64,11 +75,11 @@ This is the case we are looking for:
 --- heisenbug/flask_app.py
 +++ heisenbug/flask_app.py
 @@ -18,7 +18,7 @@
- @app.route('/{int:input}')
- def hello(input):
+ @app.route('/{int:index}')
+ def hello(index):
      """View that will fail in production."""
--    return 'Hello, world! {0} faith in you.'.format(1 * input)
-+    return 'Hello, world! {0} faith in you.'.format(1 / input)
+-    return 'Hello, world! {0} faith in you.'.format(1 * index)
++    return 'Hello, world! {0} faith in you.'.format(1 / index)
 ```
 
 Since we swallow exceptions and test only partial of our output,
@@ -117,10 +128,17 @@ This article shows you exactly what happened and how to solve this case.
 
 ## Resources
 
-You might also be interested in:
+Here I have collected different resource that you might also be interested in.
+
+### Articles
 
 - https://hackernoon.com/mutmut-a-python-mutation-testing-system-9b9639356c78
 - https://nedbatchelder.com/blog/201903/mutmut.html
+
+### Talks
+
+- https://vimeo.com/191364978
+- https://vimeo.com/171319754
 
 
 ## License
